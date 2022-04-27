@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="BlueMarketRest:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>BlueMarketRest</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="BlueMarketRest-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="BlueMarketRest:war exploded" />
+    </root>
+  </artifact>
+</component>

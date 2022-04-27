@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:formaction="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLUEMARKET</title>
+    <link rel="shortcut icon" href="./images/logo_BM.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/login.css">
+
+    <meta name="theme-color" content="#2091F9">
+
+    <meta name="title" content="BlueMarket">
+    <meta name="description"
+          content="">
+
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="Maria Luisa Enciso, Daniel Alvarado, Valeria Muñoz">
+    <meta property="og:title" content="BlueMarket">
+    <meta property="og:description"
+          content="">
+    <meta property="og:image" content="BlueMarket">
+
+    <meta property="twitter:title" content="BlueMarket">
+    <meta property="twitter:description"
+          content="">
+    <meta property="twitter:image" content="BlueMarket">
+    <title>Formulario Registro</title>
+</head>
+<body>
+
+
+<section class="form-register">
+    <h4>Registra tu usuario</h4>
+    <form id="signUp">
+        name:<input class="controls" type="text" name="name" id="name" placeholder="Ingrese su Nombre" required>
+        lastname:<input class="controls" type="text" name="lastname" id="lastname" placeholder="Ingrese su Apellido"
+                        required>
+        mail:<input class="controls" type="email" name="mail" id="mail" placeholder="Ingrese su Correo" required>
+        username: <input class="controls" type="text" name="username" id="username"
+                         placeholder="Ingrese su nombre de usuario" required/>
+        password:<input class="controls" type="password" name="password" id="password"
+                        placeholder="Ingrese su Contraseña" required/>
+        fcoins:<input class="controls" type="number" name="fcoins" id="fcoins"
+                      placeholder="Cantidad de Fcoins (Recomendado: 0)" min=0 required/>
+        <input class="button" type="submit" value="Registrar">
+    </form>
+    <script>
+        const form = document.querySelector("form");
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            try {
+                let response = await fetch("./api/users", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: new URLSearchParams(formData),
+
+                });
+                let result = await response.json();
+                console.log(result);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    </script>
+
+
+    <p><a href="Login.html">¿Ya tienes una cuenta?</a></p>
+</section>
+
+
+</body>
+</html>

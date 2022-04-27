@@ -1,0 +1,157 @@
+{
+  "info": {
+    "_postman_id": "c7594e6d-713c-4c00-8986-a330ac91b1d1",
+    "name": "WSRestTutorial",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/WSRestTutorial-1.0-SNAPSHOT/api/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "WSRestTutorial-1.0-SNAPSHOT",
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get user",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/WSRestTutorial-1.0-SNAPSHOT/api/users/paco",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "WSRestTutorial-1.0-SNAPSHOT",
+            "api",
+            "users",
+            "paco"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\": \"paco\",\n    \"password\": \"123456\",\n    \"role\": \"artist\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/WSRestTutorial-1.0-SNAPSHOT/api/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "WSRestTutorial-1.0-SNAPSHOT",
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create user (form)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "username",
+              "value": "luis",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "123456",
+              "type": "text"
+            },
+            {
+              "key": "role",
+              "value": "customer",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/WSRestTutorial-1.0-SNAPSHOT/api/users/form",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "WSRestTutorial-1.0-SNAPSHOT",
+            "api",
+            "users",
+            "form"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Upload avatar",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "/Users/fabian/Desktop/imgs/RichApe.png"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/WSRestTutorial-1.0-SNAPSHOT/api/users/fabian/avatars",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "WSRestTutorial-1.0-SNAPSHOT",
+            "api",
+            "users",
+            "fabian",
+            "avatars"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
