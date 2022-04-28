@@ -35,7 +35,7 @@ public class UserService {
     }
 
     public User createUser(String username, String name, String lastname, String mail, String password, String Fcoins, String path) throws IOException {
-        String newLine = username + "," + name + "," + lastname + "," + mail + "," + password + "," + Fcoins + "," + "\n";
+        String newLine = username + "," + name + "," + lastname + "," + mail + "," + password + "," + Fcoins + "\n";
         FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "users.csv", true);
         System.out.println("WEB-INF/classes/");
         os.write(newLine.getBytes());

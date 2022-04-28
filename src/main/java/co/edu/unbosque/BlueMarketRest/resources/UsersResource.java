@@ -66,13 +66,15 @@ public class UsersResource {
     public Response get(@PathParam("username") String username) {
         try {
             List<User> users = new UserService().getUsers();
-
+            System.out.println("entró");
             User user = users.stream()
                     .filter(u -> u.getUsername().equals(username))
                     .findFirst()
                     .orElse(null);
 
             if (user != null) {
+                System.out.println("lo hizo");
+                System.out.println(user);
                 return Response.ok()
                         .entity(user)
                         .build();
