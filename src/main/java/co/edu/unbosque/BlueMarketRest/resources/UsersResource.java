@@ -4,12 +4,12 @@ import co.edu.unbosque.BlueMarketRest.dtos.ExceptionMessage;
 import co.edu.unbosque.BlueMarketRest.dtos.User;
 import co.edu.unbosque.BlueMarketRest.services.UserService;
 
+import jakarta.servlet.ServletContext;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriBuilder;
-import jakarta.servlet.ServletContext;
 
 import java.io.File;
 import java.io.IOException;

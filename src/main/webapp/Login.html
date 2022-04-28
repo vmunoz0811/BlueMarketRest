@@ -42,9 +42,9 @@
         <input class="button" type="submit" value="Login" id="data">
 
     </form>
-    <script >
+    <script>
         const form = document.querySelector("form")
-        form.onsubmit= async (e) => {
+        form.onsubmit = async (e) => {
             e.preventDefault();
 
             let username = document.getElementById("username").value;
@@ -60,13 +60,13 @@
                 });
                 let result = await response.json();
 
-                if(username==result.username&&password==result.password){
-                    window.location.href="./Wallet.html";
-                }else{
-                    window.location.href="./401.html";
+                if (username == result.username && password == result.password) {
+                    window.location.href = "./Wallet.html";
+                } else {
+                    window.location.href = "./401.html";
                 }
 
-            }catch (err) {
+            } catch (err) {
                 console.log(err);
             }
 

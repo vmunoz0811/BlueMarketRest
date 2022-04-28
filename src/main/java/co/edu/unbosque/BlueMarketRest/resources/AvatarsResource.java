@@ -1,7 +1,6 @@
 package co.edu.unbosque.BlueMarketRest.resources;
 
 import jakarta.servlet.ServletContext;
-
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
