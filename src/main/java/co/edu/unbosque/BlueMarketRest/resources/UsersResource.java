@@ -88,5 +88,37 @@ public class UsersResource {
         }
     }
 
+    @POST
+    @Path("/form")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response createForm2(
+            @FormParam("username") String username,
+            @FormParam("fcoins") String fcoins
 
+    ) {
+        try {
+            List<User> users = new UserService().getUsers();
+            System.out.println("entró");
+            User user = users.stream()
+                    .filter(u -> u.getUsername().equals(username))
+                    .findFirst()
+                    .orElse(null);
+
+            if (user != null) {
+                System.out.println("lo encontró");
+                user.setFcoins(fcoins);
+                System.out.println("lo actualizo");
+                return Response.ok()
+                        .entity(user)
+                        .build();
+            } else {
+                return Response.status(404)
+                        .entity(new ExceptionMessage(404, "User not found"))
+                        .build();
+            }
+        } catch (IOException e) {
+            return Response.serverError().build();
+        }
+    }
 }

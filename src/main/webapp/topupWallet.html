@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:formaction="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,27 +27,20 @@
     <meta property="twitter:description"
           content="">
     <meta property="twitter:image" content="BlueMarket">
-    <title>Formulario Registro</title>
+    <title>Recargar la billetera</title>
 </head>
 <body>
 
-
 <section class="form-register">
-    <h4>Registra tu usuario</h4>
-    <form id="signUp">
-        name:<input class="controls" type="text" name="name" id="name" placeholder="Ingrese su Nombre" required>
-        lastname:<input class="controls" type="text" name="lastname" id="lastname" placeholder="Ingrese su Apellido"
-                        required>
-        mail:<input class="controls" type="email" name="mail" id="mail" placeholder="Ingrese su Correo" required>
-        username: <input class="controls" type="text" name="username" id="username"
-                         placeholder="Ingrese su nombre de usuario" required/>
-        password:<input class="controls" type="password" name="password" id="password"
-                        placeholder="Ingrese su Contraseña" required/>
+    <h4>Recarga tu billetera</h4>
+    <form id="wallet">
+
         fcoins:<input class="controls" type="number" name="fcoins" id="fcoins"
                       placeholder="Cantidad de Fcoins (Recomendado: 0)" min=0 required/>
-        <input class="button" type="submit" value="Registrar">
+        <input class="button" type="submit" value="Recargar">
     </form>
     <script>
+        name: localStorage.getItem("username").toString();
         const form = document.querySelector("form");
 
         form.onsubmit = async (e) => {
@@ -56,7 +48,7 @@
 
             const formData = new FormData(form);
             try {
-                let response = await fetch("./api/users", {
+                let response = await fetch("./api/users/form", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -66,23 +58,20 @@
                 });
                 let result = await response.json();
                 console.log(result);
+                localStorage.removeItem("fcoins");
+                localStorage.setItem("fcoins", result.fcoins);
+                window.location.href = "./Profile.html";
 
             } catch (err) {
                 console.log(err);
             }
-            localStorage.setItem("username",result.username);
-            localStorage.setItem("name",result.name);
-            localStorage.setItem("lastname",result.lastname);
-            localStorage.setItem("mail",result.mail);
-            localStorage.setItem("fcoins", result.fcoins);
-            window.location.href = "BlueMarketRest-1.0-SNAPSHOT/index2.html";
+
         }
     </script>
 
 
     <p><a href="Login.html">¿Ya tienes una cuenta?</a></p>
 </section>
-
 
 </body>
 </html>

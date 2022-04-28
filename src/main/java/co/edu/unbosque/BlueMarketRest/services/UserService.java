@@ -42,4 +42,6 @@ public class UserService {
         os.close();
         return new User(username, name, lastname, mail, password, Fcoins);
     }
+
+
 }

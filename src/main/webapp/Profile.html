@@ -39,26 +39,25 @@
 
     <div class="perfil-usuario-body">
         <div class="perfil-usuario-bio">
-            name: <h3 class="titulo"><%= request.getAttribute("name")%>
-        </h3>
+            <h3 class="titulo" id="name"> </h3>
+            <script>
+                var nombre= localStorage.getItem("name").toString();
+                document.getElementById("name").innerHTML= nombre;
+            </script>
+            <h3 class="titulo" id="lastname"> </h3>
+            <script>
+                var apellido= localStorage.getItem("lastname").toString();
+                document.getElementById("lastname").innerHTML= apellido;
+            </script>
+            <h3 class="titulo" id="mail"> </h3>
+            <script>
+                var mail= localStorage.getItem("mail").toString();
+                document.getElementById("mail").innerHTML= mail;
+            </script>
         </div>
         <div class="perfil-usuario-footer">
             <h3 class="titulo">Crea una publicación</h3>
-            <label> Tipos de arte </label> &nbsp; &nbsp;
-            <select name="typesArt">
-                <option value="abstractArt">Arte Abstracto</option>
-                <option value="cubism">Cubismo</option>
-                <option value="photography">Fotografía</option>
-                <option value="impresionism">Impresionismo</option>
-                <option value="renaissance">Renacimiento</option>
-                <option value="xxcentury">Siglo XX</option>
-            </select>
-        </div> &nbsp;
-        <div class="perfil-usuario-footer">
-            <form name="subida-imagenes" type="POST" enctype="multipart/formdata">
-                <input type="file" name="imagen1"/>
-                <input class="button" type="submit" name="subir-imagen" value="Publicar"/>
-            </form>
+            <a href="CollectionsArtist.html" class="nav__links">Ir a crear una publicación</a>
         </div>
 
         <br>

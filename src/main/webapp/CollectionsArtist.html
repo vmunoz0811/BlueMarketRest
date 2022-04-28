@@ -11,11 +11,14 @@
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/estilos.css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+
     <meta name="theme-color" content="#2091F9">
 
     <meta name="title" content="BlueMarket">
-    <meta name="description"
-          content="">
+    <meta name="description" content="">
 
 
     <meta property="og:type" content="website">
@@ -43,7 +46,20 @@
                     <a href="index2.html" class="nav__links">Inicio</a>
                 </li>
                 <li class="nav__items">
-                    <a href="ArtistProfile.jsp" class="nav__links"><img src="./images/logoUser.png" class="Img_user"></a>
+                    <a href="Categories2.html" class="nav__links">Explorar</a>
+                </li>
+                <li class="nav__items">
+                    <a href="index.html" class="nav__links">Cerrar sesión</a>
+                    <script>
+                        localStorage.removeItem("username",username);
+                        localStorage.removeItem("name",result.name);
+                        localStorage.removeItem("lastname",result.lastname);
+                        localStorage.removeItem("mail",result.mail);
+                        localStorage.removeItem("fcoins", result.fcoins);
+                    </script>
+                </li>
+                <li class="nav__items">
+                    <a href="Profile.html" class="nav__links"><img src="images/logoUser.png" class="Img_user"></a>
                 </li>
 
                 <img src="./images/close.svg" class="nav__close">
@@ -60,142 +76,92 @@
     </header>
 
     <main>
-        <section class="testimony">
-            <div class="testimony__container container">
-                <img src="./images/leftarrow.svg" class="testimony__arrow" id="before">
+        <div class="container gallery-container">
+            <h1>¿Qué post quieres subir hoy?</h1>
 
-                <section class="testimony__body testimony__body--show" data-id="1">
-                    <div class="testimony__texts">
-                        <h2 class="subtitle">Arte Abstracto <span class="testimony__course" >by Georges Valmier</span></h2>
-
-                        <p class="testimony__review">Arte que no representa objetos de la realidad, sino nuevas formas.</p>
+            <p class="page-description text-center"><div class="form-file">
+            <div class="form-file__action">
+                <label for="image" class="title">Foto de publicación</label>
+                <form id="uploadNFT" enctype="multipart/form-data">
+                    <div class="form-file__result" id="result-image">
+                        <img id="img-result" alt=""/>
                     </div>
+                file: <input type="file" name="image" id="image"/>
+                    <button><li class="lr a">Publicar post</li></button>
+                </form>
+            </div>
+        </div>
+            <script>
+                const form = document.getElementById("uploadNFT");
+                uploadNFT = async (e)=> {
+                    e.preventDefault();
+                    const response = await fetch('./api/users/${}',{
+                    method: 'POST',
+                    body: new FormData(form)
+                });
+                    console.log(response);
+                }
+                form.addEventListener("submit",uploadNFT);
+            </script>
 
-                    <figure class="testimony__picture">
-                        <img src="./images/georges_valmier.jpg" class="testimony__img">
+            <div class="tz-gallery">
 
-
-                        <td>
-                            <li class="nav__items">
-                                <a href="AbstractArt.html" class="nav__links">Ver mas...</a>
-                            </li>
-
-                        </td>
-
-                    </figure>
-
-                </section>
-
-                <section class="testimony__body" data-id="2">
-                    <div class="testimony__texts">
-                        <h2 class="subtitle">Cubismo <span class="testimony__course">by Robert Delaunay</span></h2>
-                        <p class="testimony__review">El cubismo es un movimiento vanguardista de inicios del siglo XX que se caracteriza por el uso dominante de figuras geométricas como los rectángulos, los triángulos y, especialmente, los cubos, de donde toma su nombre.</p>
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="../images/park.jpg">
+                            <img src="../images/park.jpg" alt="Park">
+                        </a>
                     </div>
-
-                    <figure class="testimony__picture">
-                        <img src="./images/robert_delaunay.jpg" class="testimony__img">
-
-
-                        <td>
-
-                            <li class="nav__items">
-                                <a href="Cubismo.html" class="nav__links">Ver mas...</a>
-                            </li>
-
-                        </td>
-
-                    </figure>
-                </section>
-
-                <section class="testimony__body" data-id="3">
-                    <div class="testimony__texts">
-                        <h2 class="subtitle">Fotografia <span class="testimony__course"> By Anton Belovodchenko</span></h2>
-                        <p class="testimony__review">La fotografia es la mas avanzada tecnologicamente y permite capturar escenas unicas.</p>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="../images/bridge.jpg">
+                            <img src="../images/bridge.jpg" alt="Bridge">
+                        </a>
                     </div>
-
-                    <figure class="testimony__picture">
-                        <img src="./images/anton_belovodchenko.jpg" class="testimony__img">
-
-
-                        <td>
-                            <li class="nav__items">
-                                <a href="Fotografia.html" class="nav__links">Ver mas...</a>
-                            </li>
-
-                        </td>
-
-                    </figure>
-                </section>
-
-                <section class="testimony__body" data-id="4">
-                    <div class="testimony__texts">
-                        <h2 class="subtitle">Impresionismo <span class="testimony__course"> By Vincent Van Gogh
-                                </span></h2>
-                        <p class="testimony__review">Surge en el último tercio del siglo XIX y se caracteriza por plasmar la realidad como era percibida visualmente. </p>
+                    <div class="col-sm-12 col-md-4">
+                        <a class="lightbox" href="../images/tunnel.jpg">
+                            <img src="../images/tunnel.jpg" alt="Tunnel">
+                        </a>
                     </div>
-
-                    <figure class="testimony__picture">
-                        <img src="./images/Vincent_van_gogh.jpg" class="testimony__img">
-
-
-                        <td>
-                            <li class="nav__items">
-                                <a href="Impresionismo.html" class="nav__links">Ver mas...</a>
-                            </li>
-
-                        </td>
-
-                    </figure>
-                </section>
-
-                <section class="testimony__body" data-id="5">
-                    <div class="testimony__texts">
-                        <h2 class="subtitle">Renacimiento <span class="testimony__course"> By Michel Angelo
-                                </span></h2>
-                        <p class="testimony__review">Un movimiento artístico que surgió en Italia en el siglo XIV, durante la transición entre la Edad Media y la Edad Moderna, y se destacó por su interés en el saber de la razón y en los valores clásicos de la antigua Grecia. </p>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="../images/coast.jpg">
+                            <img src="../images/coast.jpg" alt="Coast">
+                        </a>
                     </div>
-
-                    <figure class="testimony__picture">
-                        <img src="./images/michelangelo.jpg" class="testimony__img">
-
-
-                        <td>
-                            <li class="nav__items">
-                                <a href="Renacimiento.html" class="nav__links">Ver mas...</a>
-                            </li>
-
-                        </td>
-
-                    </figure>
-                </section>
-
-                <section class="testimony__body" data-id="6">
-                    <div class="testimony__texts">
-                        <h2 class="subtitle">Siglo XX <span class="testimony__course"> By Camille Pissarro
-                                </span></h2>
-                        <p class="testimony__review">El arte del Siglo XX se ve fuertemente influenciado por política y social del momento. Es un arte que no escapa a la realidad, sino todo lo contrario, brota de ella, como una forma de catarsis.</p>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="../images/rails.jpg">
+                            <img src="../images/rails.jpg" alt="Rails">
+                        </a>
                     </div>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="../images/traffic.jpg">
+                            <img src="../images/traffic.jpg" alt="Traffic">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="../images/rocks.jpg">
+                            <img src="../images/rocks.jpg" alt="Rocks">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="../images/benches.jpg">
+                            <img src="../images/benches.jpg" alt="Benches">
+                        </a>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <a class="lightbox" href="../images/sky.jpg">
+                            <img src="../images/sky.jpg" alt="Sky">
+                        </a>
+                    </div>
+                </div>
 
-                    <figure class="testimony__picture">
-                        <img src="./images/camille_pissarro.jpg" class="testimony__img">
-
-
-                        <td>
-                            <li class="nav__items">
-                                <a href="Sigloxx.html" class="nav__links">Ver mas...</a>
-                            </li>
-
-                        </td>
-
-                    </figure>
-                </section>
-
-
-                <img src="./images/rightarrow.svg" class="testimony__arrow" id="next">
             </div>
 
-        </section>
+        </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+        <script>
+            baguetteBox.run('.tz-gallery');
+        </script>
     </main>
 
     <script src="./js/slider.js"></script>

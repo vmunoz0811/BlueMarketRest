@@ -44,14 +44,22 @@
                 <a href="Categories2.html" class="nav__links">Explorar</a>
             </li>
             <li class="nav__items">
-                <a href="Profile.jsp" class="nav__links">Crear publicación</a>
+                <a href="Profile.html" class="nav__links">Crear publicación</a>
             </li>
             <li class="nav__items">
-                <form action="./signup" method="post">
-                    <a href="Profile.jsp" class="nav__links"><img src="images/logoUser.png" class="Img_user"><input
-                            type="submit" id="profile" style="display: none"/></a>
-                </form>
+                <a href="index.html" class="nav__links">Cerrar sesión</a>
+                <script>
+                    localStorage.removeItem("username",username);
+                    localStorage.removeItem("name",result.name);
+                    localStorage.removeItem("lastname",result.lastname);
+                    localStorage.removeItem("mail",result.mail);
+                    localStorage.removeItem("fcoins", result.fcoins);
+                </script>
             </li>
+            <li class="nav__items">
+                <a href="Profile.html" class="nav__links"><img src="images/logoUser.png" class="Img_user"></a>
+            </li>
+
 
             <img src="./images/close.svg" class="nav__close">
         </ul>

@@ -61,7 +61,12 @@
                 let result = await response.json();
 
                 if (username == result.username && password == result.password) {
-                    window.location.href = "./Wallet.html";
+                    localStorage.setItem("username",username);
+                    localStorage.setItem("name",result.name);
+                    localStorage.setItem("lastname",result.lastname);
+                    localStorage.setItem("mail",result.mail);
+                    localStorage.setItem("fcoins", result.fcoins);
+                    window.location.href = "./Profile.html";
                 } else {
                     window.location.href = "./401.html";
                 }
